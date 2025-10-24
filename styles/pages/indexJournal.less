@@ -1,0 +1,302 @@
+/**
+ * @file styles/pages/indexJournal.less
+ *
+ * Copyright (c) 2014-2020 Simon Fraser University
+ * Copyright (c) 2003-2020 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief Custom homepage styles for Editorial Management System
+ */
+
+// Hero Section
+.ems_hero_section {
+	background: @bg;
+	padding: @triple 0;
+	margin-bottom: @triple;
+
+	@media (min-width: @screen-desktop) {
+		padding: @quadruple 0;
+		margin-bottom: @quadruple;
+	}
+}
+
+.ems_hero_wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 @base;
+	display: flex;
+	flex-direction: column;
+	gap: @triple;
+	align-items: center;
+
+	@media (min-width: @screen-phone) {
+		padding: 0 @double;
+	}
+
+	@media (min-width: @screen-desktop) {
+		flex-direction: row;
+		padding: 0 @triple;
+		gap: @quadruple;
+		align-items: flex-start;
+	}
+}
+
+.ems_hero_left {
+	flex: 0 0 auto;
+	width: 100%;
+	max-width: 300px;
+
+	@media (min-width: @screen-desktop) {
+		width: 35%;
+		max-width: 350px;
+	}
+}
+
+.ems_hero_image {
+	width: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+	background: @bg-shade;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+// Placeholder for journals without thumbnail
+.ems_hero_placeholder {
+	aspect-ratio: 4/3;
+	border: 3px solid @bg-border-color;
+	background: @bg;
+	box-shadow: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.ems_placeholder_content {
+		padding: @double;
+		text-align: center;
+	}
+
+	.ems_placeholder_text {
+		font-family: @font-heading;
+		font-size: @font-base;
+		color: @text-light;
+		display: block;
+		word-wrap: break-word;
+	}
+}
+
+.ems_hero_right {
+	flex: 1;
+	width: 100%;
+	text-align: center;
+
+	@media (min-width: @screen-desktop) {
+		text-align: left;
+	}
+}
+
+.ems_hero_title {
+	font-family: @font-heading;
+	font-size: 2rem;
+	font-weight: @bold;
+	color: @text;
+	line-height: 1.2;
+	margin: 0 0 @base 0 !important;
+
+	@media (min-width: @screen-phone) {
+		font-size: 2.5rem;
+	}
+
+	@media (min-width: @screen-desktop) {
+		font-size: 3rem;
+		margin: 0 0 @double 0 !important;
+	}
+}
+
+.ems_hero_description {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: @text-light;
+	margin-bottom: @triple;
+
+	@media (min-width: @screen-phone) {
+		font-size: 1.1rem;
+	}
+
+	p {
+		margin: 0 0 @base 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.ems_hero_buttons {
+	display: flex;
+	flex-direction: column;
+	gap: @base;
+	margin-bottom: @triple;
+
+	@media (min-width: @screen-phone) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	@media (min-width: @screen-desktop) {
+		justify-content: flex-start;
+	}
+}
+
+.ems_button {
+	display: inline-block;
+	padding: @base @double;
+	font-family: @font-heading;
+	font-size: @font-base;
+	font-weight: @bold;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: 2px solid transparent;
+	min-width: 160px;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+}
+
+.ems_button_primary {
+	background: @accent;
+	color: #000;
+	border-color: @accent;
+
+	&:hover,
+	&:focus {
+		background: darken(@accent, 10%);
+		border-color: darken(@accent, 10%);
+		color: #000;
+	}
+}
+
+.ems_button_secondary {
+	background: transparent;
+	color: @text;
+	border-color: @bg-border-color;
+
+	&:hover,
+	&:focus {
+		background: @bg-shade;
+		color: @text;
+	}
+}
+
+.ems_button_tertiary {
+	background: @bg-base;
+	color: @text-bg-base;
+	border-color: @bg-base;
+
+	&:hover,
+	&:focus {
+		background: darken(@bg-base, 10%);
+		border-color: darken(@bg-base, 10%);
+		color: @text-bg-base;
+	}
+}
+
+.ems_hero_partners {
+	display: flex;
+	flex-wrap: wrap;
+	gap: @double;
+	align-items: center;
+	justify-content: center;
+	margin-top: @double;
+
+	@media (min-width: @screen-desktop) {
+		justify-content: flex-start;
+	}
+
+	img {
+		max-height: 50px;
+		width: auto;
+		opacity: 0.7;
+		transition: opacity 0.3s ease;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+// Keep remaining styles from parent theme
+.pkp_page_index {
+
+	.homepage_image,
+	.additional_content {
+		margin-left: -@base;
+		margin-right: -@base;
+
+		@media (min-width: @screen-phone) {
+			margin-left: -@double;
+			margin-right: -@double;
+		}
+
+		@media (min-width: @screen-desktop) {
+			margin-left: -@triple;
+			margin-right: -@triple;
+		}
+	}
+
+	.current_issue {
+
+		.current_issue_title {
+			margin: @double 0;
+			font-weight: @bold;
+		}
+
+		.read_more {
+			.cmp_button_text(@fa-var-chevron-right);
+			margin-bottom: @double;
+		}
+
+		@media(min-width: @screen-tablet) {
+
+			.section:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.additional_content {
+		padding: @triple @base 0 @base;
+		border-top: @bg-border;
+
+		@media (min-width: @screen-phone) {
+			padding-left: @double;
+			padding-right: @double;
+		}
+
+		@media (min-width: @screen-desktop) {
+			padding-left: @triple;
+			padding-right: @triple;
+		}
+
+		> p:first-child {
+			margin-top: 0;
+		}
+
+		> p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
