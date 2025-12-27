@@ -59,7 +59,7 @@
 						<a href="{$homeUrl}" class="is_text">{$displayPageHeaderTitle|escape}</a>
 					{else}
 						<a href="{$homeUrl}" class="is_img">
-							<img src="{$baseUrl}/templates/images/structure/logo.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="180" height="90" />
+							<img src="{$baseUrl}/plugins/themes/emsDefaultManuscript/ems_brand_logo_full.png" alt="{$applicationName|escape}" title="{$applicationName|escape}" width="100%" height="auto" style="max-width: 180px;" />
 						</a>
 					{/if}
 					</div>

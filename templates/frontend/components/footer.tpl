@@ -51,7 +51,7 @@
 			<div class="pkp_brand_footer">
 				<a href="https://ems.pub" target="_blank" rel="noopener">
 					{* Use EMS brand logo instead of default OJS logo *}
-					<img alt="EMS Publishing" src="{$baseUrl}/plugins/themes/defaultManuscript/ems_brand_logo_full.png">
+					<img alt="EMS Publishing" src="{$baseUrl}/plugins/themes/emsDefaultManuscript/ems_brand_logo_full.png">
 				</a>
 			</div>
 		</div>
