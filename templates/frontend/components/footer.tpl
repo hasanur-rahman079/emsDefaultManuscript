@@ -43,8 +43,14 @@
 		<div class="ems_footer_main">
 			<div class="ems_footer_links">
 				<ul>
-					<li><a href="{url page="about"}">{translate key="about.aboutContext"}</a></li>
-					<li><a href="{url page="about" op="privacy"}">{translate key="about.privacyStatement"}</a></li>
+					{if $currentContext}
+						<li><a href="{url page="about"}">{translate key="about.aboutContext"}</a></li>
+						<li><a href="{url page="about" op="privacy"}">{translate key="about.privacyStatement"}</a></li>
+					{else}
+						<li><a href="https://ems.pub/about">About</a></li>
+						<li><a href="https://ems.pub/privacy">{translate key="about.privacyStatement"}</a></li>
+						<li><a href="https://ems.pub/contact">Contact</a></li>
+					{/if}
 				</ul>
 			</div>
 
@@ -57,7 +63,7 @@
 		</div>
 
 		<div class="ems_footer_copyright">
-			<p>&copy; {$smarty.now|date_format:"Y"} ems.pub is a Editorial Management System by <a href="https://exomeit.com" target="_blank" rel="noopener">ExomeIT</a></p>
+			<p>&copy; {$smarty.now|date_format:"Y"} Editorial Management System by EMS Pub Technologies powered by <a href="https://exomeit.com" target="_blank" rel="noopener">ExomeIT</a></p>
 		</div>
 	</div>
 </div><!-- pkp_structure_footer_wrapper -->
