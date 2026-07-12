@@ -14,9 +14,49 @@
  */
 namespace APP\plugins\themes\emsDefaultManuscript;
 
+use APP\core\Application;
+use PKP\plugins\Hook;
 use PKP\plugins\ThemePlugin;
 
 class EmsDefaultManuscriptThemePlugin extends ThemePlugin {
+
+	/**
+	 * @copydoc Plugin::register()
+	 */
+	public function register($category, $path, $mainContextId = null)
+	{
+		if (!parent::register($category, $path, $mainContextId)) {
+			return false;
+		}
+
+		if (!Application::isUnderMaintenance()) {
+			// Auto-set this theme for newly created journals
+			Hook::add('Context::add', [$this, '_setThemeForNewContext']);
+		}
+
+		return true;
+	}
+
+	/**
+	 * Hook: enable this theme AND set it as default for newly created journals.
+	 * Both are required: the plugin must be enabled for the context, and the
+	 * themePluginPath setting must point to it.
+	 */
+	public function _setThemeForNewContext(string $hookName, array $args): bool
+	{
+		$context = &$args[0];
+		$contextId = $context->getId();
+
+		// 1. Enable the theme plugin for this journal
+		$this->updateSetting($contextId, 'enabled', true, 'bool');
+
+		// 2. Set it as the active theme
+		$context->setData('themePluginPath', 'emsDefaultManuscript');
+		Application::getContextDAO()->updateObject($context);
+
+		return Hook::CONTINUE;
+	}
+
 	/**
 	 * Initialize the theme's styles, scripts and hooks. This is only run for
 	 * the currently active theme.
@@ -96,4 +136,3 @@ class EmsDefaultManuscriptThemePlugin extends ThemePlugin {
 		return __('plugins.themes.emsDefaultManuscript.description');
 	}
 }
-
